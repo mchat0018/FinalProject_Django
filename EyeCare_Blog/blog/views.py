@@ -24,7 +24,7 @@ class BlogHome(ListView):
     def get_context_data(self,**kwargs):
         context=super().get_context_data(**kwargs)
         #context['newest']=Blog.objects.order_by('-date_posted')[:4]
-        context['popular']= Blog.objects.order_by('-comment_count')[:4] 
+        context['popular']= Blog.objects.annotate(comment_count=Count('comment')).order_by('-comment_count')[:4] , 
         context['categories']= Categories.objects.all()
         return context
 
@@ -40,7 +40,7 @@ class CategoryBlogPosts(ListView):
 
     def get_context_data(self,**kwargs):
         context=super().get_context_data(**kwargs)
-        context['popular']=Blog.objects.order_by('-comment_count')[:4] 
+        context['popular']=Blog.objects.annotate(comment_count=Count('comment')).order_by('-comment_count')[:4] 
         context['categories']=Categories.objects.all()
         return context
 
@@ -58,12 +58,13 @@ def blogDetail(request,pk):
     
     else:
         form=CommentForm()
+        blg=get_object_or_404(Blog, id=pk)
 
     context={
         'form': form,
         'post': blg,
         'comments':Comment.objects.filter(blog=blg).all(),
-        'popular': Blog.objects.order_by('-comment_count')[:4],
+        'popular': Blog.objects.annotate(comment_count=Count('comment')).order_by('-comment_count')[:4],
         'categories': Categories.objects.all()
     }    
 
@@ -84,7 +85,7 @@ def search(request):
     context={
         'query':query,
         'results':search_results,
-        'popular': Blog.objects.order_by('-comment_count')[:4],
+        'popular': Blog.objects.annotate(comment_count=Count('comment')).order_by('-comment_count')[:4] ,
         'categories': Categories.objects.all()
     }
     return render(request,'blog/search.html',context)

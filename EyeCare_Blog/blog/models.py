@@ -6,10 +6,6 @@ from django.urls import reverse
 # Create your models here.
 class Categories(models.Model):
     field=models.CharField(max_length=20)
-
-    @property
-    def count_blogs(self):
-        return Blog.objects.filter(field_tag=self).count()
     
     def __str__(self):
         return self.field
@@ -21,11 +17,6 @@ class Blog(models.Model):
     author=models.ForeignKey(User,on_delete=models.CASCADE)
     field_tag=models.ForeignKey(Categories,on_delete=models.CASCADE,blank=True,null=True)
     image=models.ImageField(default='default.jpg',upload_to='blog_pics')
-
-    @property
-    def comment_count(self):
-        return Comment.objects.filter(blog=self).count()
-
     
     def __str__(self):
         return self.title

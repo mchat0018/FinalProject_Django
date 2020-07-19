@@ -6,59 +6,42 @@ from .forms import AppointmentForm,QueryForm
 from django.contrib import messages
 from django.views.generic import ListView
 from django.urls import reverse
+from django.db.models import Count
 
-def start(request):
-    context={
-        'motto': 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugiat eum vitae reiciendis atque sed illum incidunt quis'
-    }
-    return render(request,'HomePage/index.html#home',context)
-
-def about(request):
-    context:{
-        'about': PortFolio.objects.first()
-    }
-    return render(request,'HomePage/index.html#about-section',context)
-
-def bookAppointment(request):
+def home(request):
+    
     if request.method == 'POST':
-        form=AppointmentForm(request.POST)
-        if form.is_valid():
-            form.save()
-            messages.success(request,f'Your form has been sent. You will receive a response either by phone or email')
-            return reverse('home')
+        if 'appoint_sub' in request.POST:
+            a_form=AppointmentForm(request.POST)
+            c_form=QueryForm()
+            if a_form.is_valid():
+                a_form.save()
+                messages.success(request,f'Your form has been sent. You will receive a response either by phone or email')
+                return reverse('home')
+
+        elif 'contact_sub' in request.POST:
+            c_form=QueryForm(request.POST)
+            a_form=AppointmentForm()
+            if c_form.is_valid():
+                c_form.save()
+                messages.success(request,f'Your form has been sent. You will receive a response either by phone or email')
+                return reverse('home')
         
     else:
-        form=AppointmentForm()
-
-    context={
-        'form': form,
-        'services': Services.objects.all()
-    }
-    return render(request,'HomePage/index.html#service-section',context)
-
-def blogSection(request):
-    context={
-        'latest':Blog.objects.order_by('-date_posted')[:3],
-        'popular':Blog.objects.order_by('-comment_count')[:3]
-    }
-    return render(request,'HomePage/index.html#blog-section',context)
-
-class Testimony(ListView):
-    model:Testimonials
-    template_name='HomePage/index.html#testimonial-section'
-
-def contact(request):
-    if request.method =='POST':
-        form=QueryForm(request.POST)
-        if form.is_valid():
-            form.save()
-            messages.success(request,f'Your form has been sent. You will receive a response either by phone or email')
-            return reverse('home')
-    else:
-        form=QueryForm()
+        a_form=AppointmentForm()
+        c_form=QueryForm()
     
     context={
-        'form': form,
+        'motto': 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugiat eum vitae reiciendis atque sed illum incidunt quis',
+        'about':PortFolio.objects.first(),
+        'services':Services.objects.all(),
+        'a_form':a_form,
+        'latest':Blog.objects.order_by('-date_posted')[:3],
+        'popular':Blog.objects.annotate(comment_count=Count('comment')).order_by('-comment_count')[:3] ,
+        'testimonials':Testimonials.objects.all(),
+        'c_form': c_form,
         'contact_details': ContactDetails.objects.first()
     }
-    return render(request,'HomePage/index.html#contact-section',context)    
+
+    return render(request,'HomePage/index.html',context)
+

@@ -1,5 +1,6 @@
+{% load static %}
+{% load crispy_forms_tags %}
 <!DOCTYPE html>
-{%load crispy_forms_tags%}
 <html lang="en">
 <head>
     <title>Mediplus - Free Bootstrap 4 Template by Colorlib</title>
@@ -8,20 +9,20 @@
     
     <link href="https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,500,600,700,800,900" rel="stylesheet">
 
-    <link rel="stylesheet" href="css/open-iconic-bootstrap.min.css">
-    <link rel="stylesheet" href="css/animate.css">
+    <link rel="stylesheet" href="{% static 'blog/css/open-iconic-bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'blog/css/animate.css' %}">
     
-    <link rel="stylesheet" href="css/owl.carousel.min.css">
-    <link rel="stylesheet" href="css/owl.theme.default.min.css">
-    <link rel="stylesheet" href="css/magnific-popup.css">
+    <link rel="stylesheet" href="{% static 'blog/css/owl.carousel.min.css' %}">
+    <link rel="stylesheet" href="{% static 'blog/css/owl.theme.default.min.css' %}">
+    <link rel="stylesheet" href="{% static 'blog/css/magnific-popup.css' %}">
 
-    <link rel="stylesheet" href="css/aos.css">
+    <link rel="stylesheet" href="{% static 'blog/css/aos.css' %}">
 
-    <link rel="stylesheet" href="css/ionicons.min.css">
+    <link rel="stylesheet" href="{% static 'blog/css/ionicons.min.css' %}">
     
-    <link rel="stylesheet" href="css/flaticon.css">
-    <link rel="stylesheet" href="css/icomoon.css">
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="{% static 'blog/css/flaticon.css' %}">
+    <link rel="stylesheet" href="{% static 'blog/css/icomoon.css' %}">
+    <link rel="stylesheet" href="{% static 'blog/css/style.css' %}">
 </head>
 <body data-spy="scroll" data-target=".site-navbar-target" data-offset="300">
   	<div class="py-1 bg-black top">
@@ -51,13 +52,13 @@
 	    
 			<div class="collapse navbar-collapse" id="ftco-nav">
 				<ul class="navbar-nav nav ml-auto">
-					<li class="nav-item"><a href="{% url 'home' %}" class="nav-link"><span>Home</span></a></li>
-					<li class="nav-item"><a href="{% url 'about' %}" class="nav-link"><span>About</span></a></li>
-					<li class="nav-item"><a href="{% url 'appointment' %}" class="nav-link"><span>Services</span></a></li>
-					<li class="nav-item"><a href="{% url 'blogsection' %}" class="nav-link"><span>Blog</span></a></li>
-					<li class="nav-item"><a href="{% url 'testimonials' %}" class="nav-link"><span>Testimonials</span></a></li>
-					<li class="nav-item"><a href="{% url 'contact' %}" class="nav-link"><span>Contact</span></a></li>
-					<li class="nav-item cta mr-md-2"><a href="{% url 'appointment' %}" class="nav-link">Appointment</a></li>
+					<li class="nav-item"><a href="#home" class="nav-link"><span>Home</span></a></li>
+					<li class="nav-item"><a href="#about-section" class="nav-link"><span>About</span></a></li>
+					<li class="nav-item"><a href="#service-section" class="nav-link"><span>Services</span></a></li>
+					<li class="nav-item"><a href="#blog-section" class="nav-link"><span>Blog</span></a></li>
+					<li class="nav-item"><a href="#testimonial-section" class="nav-link"><span>Testimonials</span></a></li>
+					<li class="nav-item"><a href="#contact-section" class="nav-link"><span>Contact</span></a></li>
+					<li class="nav-item cta mr-md-2"><a href="#service-section" class="nav-link">Appointment</a></li>
 				</ul>
 			</div>
 	    </div>
@@ -72,7 +73,7 @@
           				<span class="subheading">Welcome to Mediplus</span>
 	            		<h1 class="mb-4">We are here <br>for your Care</h1>
 	            		<p class="mb-4">Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Separated they live in Bookmarksgrove.</p>
-	            		<p><a href="{% url 'appointment' %}" class="btn btn-primary py-3 px-4">Make an appointment</a></p>
+	            		<p><a href="#service-section" class="btn btn-primary py-3 px-4">Make an appointment</a></p>
             		</div>
           		</div>
         	</div>
@@ -93,7 +94,7 @@
 			          		<div class="col-md-12 heading-section ftco-animate p-4 p-lg-5">
 			            		<h2 class="mb-4">This is me, <span>Dr Amrita Kapoor Chaturvedi</span></h2>
 			            		<p>{{about.description}}</p>
-			            		<p><a href="{% url 'appointment' %}" class="btn btn-primary py-3 px-4">Make an appointment</a> <a href="{% url 'contact' %}" class="btn btn-secondary py-3 px-4">Contact us</a></p>
+			            		<p><a href="#service-section" class="btn btn-primary py-3 px-4">Make an appointment</a> <a href="#contact-section" class="btn btn-secondary py-3 px-4">Contact us</a></p>
 			          		</div>
 			        	</div>
 		        	</div>
@@ -110,7 +111,7 @@
 					<div class="py-lg-5">
 						<div class="row justify-content-center pb-5">
 							<div class="col-md-12 heading-section ftco-animate">
-								<h2 class="mb-3">Services</h2>
+								<h2 class="mb-3">Specialiations</h2>
 							</div>
 						</div>
 						<div class="row">
@@ -132,10 +133,10 @@
 						<form method="POST" class="appointment-form ftco-animate">
 							<fieldset class="form-group">
 								<legend class="border-bottom mb-4">Request Appointment</legend>
-								{{ form|crispy }}
+								{{ a_form|crispy }}
 							</fieldset>
 							<div class="form-group">
-								<button class="btn btn-outline-info" type="submit">Submit</button>
+								<button class="btn btn-outline-info" type="submit" name="appoint_sub">Submit</button>
 							</div>	
 						</form>
 					</div>
@@ -160,12 +161,12 @@
 							<img src="{{post.image.url}}" class="block-20">
 							<div class="text d-block">
 								<div class="meta mb-3">
-									<div>{{post.date_posted|date: "M d, Y" }}</div>
+									<div>{{ post.date_posted }}</div>
 									<div><a href="#">Admin</a></div>
-									<div><a href="#" class="meta-chat"><span class="icon-chat"></span>{{post.comment_count}}</a></div>
+									<div><a href="#" class="meta-chat"><span class="icon-chat"></span>{{ post.comment_set.count}}</a></div>
 								</div>
 								<h3 class="heading"><a href="{% url 'blog_detail' post.id %}">{{post.title}}</a></h3>
-								<p>{{ post.content|truncate:50 }}</p>
+								<p>{{ post.content|truncatechars:50 }}</p>
 								<p><a href="{% url 'blog_detail' post.id %}" class="btn btn-primary py-2 px-3">Read more</a></p>
 							</div>
 						</div>
@@ -179,12 +180,12 @@
 							<img src="{{post.image.url}}" class="block-20">
 							<div class="text d-block">
 								<div class="meta mb-3">
-									<div>{{post.date_posted|date: "M d, Y" }}</div>
+									<div>{{ post.date_posted }}</div>
 									<div><a href="#">Admin</a></div>
-									<div><a href="#" class="meta-chat"><span class="icon-chat"></span>{{post.comment_count}}</a></div>
+									<div><a href="#" class="meta-chat"><span class="icon-chat"></span>{{post.comment_set.count}}</a></div>
 								</div>
 								<h3 class="heading"><a href="{% url 'blog_detail' post.id %}">{{post.title}}</a></h3>
-								<p>{{ post.content|truncate:50 }}</p>
+								<p>{{ post.content|truncatechars:50 }}</p>
 								<p><a href="{% url 'blog_detail' post.id %}" class="btn btn-primary py-2 px-3">Read more</a></p>
 							</div>
 						</div>
@@ -272,10 +273,10 @@
 				<div class="col-md-6 order-md-last d-flex">
 					<form method='POST' class="bg-light p-5 contact-form">
 						<div class="form-group">
-							{{form|crispy}}
+							{{c_form|crispy}}
 						</div>
 						<div class="form-group">
-							<button class="btn btn-outline-info" type="submit">Send</button>
+							<button class="btn btn-outline-info" type="submit" name="contact_sub">Send</button>
 						</div>
 					</form>
 				</div>
@@ -299,12 +300,12 @@
 				<div class="ftco-footer-widget mb-4 ml-md-4">
 					<h2 class="ftco-heading-2">Links</h2>
 					<ul class="list-unstyled">
-						<li><a href="{% url 'home' %}"><span class="icon-long-arrow-right mr-2"></span>Home</a></li>
-						<li><a href="{% url 'about' %}"><span class="icon-long-arrow-right mr-2"></span>About</a></li>
-						<li><a href="{% url 'appointment' %}"><span class="icon-long-arrow-right mr-2"></span>Services and Appointment</a></li>
-						<li><a href="{% url 'blogs-home' %}"><span class="icon-long-arrow-right mr-2"></span>Blog</a></li>
-						<li><a href="{% url 'testimonials' %}"><span class="icon-long-arrow-right mr-2"></span>Testimonials</a></li>
-						<li><a href="{% url 'contact' %}"><span class="icon-long-arrow-right mr-2"></span>Contact</a></li>
+						<li><a href="#home"><span class="icon-long-arrow-right mr-2"></span>Home</a></li>
+						<li><a href="#about-section"><span class="icon-long-arrow-right mr-2"></span>About</a></li>
+						<li><a href="#service-section"><span class="icon-long-arrow-right mr-2"></span>Services and Appointment</a></li>
+						<li><a href="#blog-section"><span class="icon-long-arrow-right mr-2"></span>Blog</a></li>
+						<li><a href="#testimonial-section"><span class="icon-long-arrow-right mr-2"></span>Testimonials</a></li>
+						<li><a href="#contact-section"><span class="icon-long-arrow-right mr-2"></span>Contact</a></li>
 					</ul>
 				</div>
 			</div>
@@ -338,22 +339,23 @@
 	<div id="ftco-loader" class="show fullscreen"><svg class="circular" width="48px" height="48px"><circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee"/><circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10" stroke="#F96D00"/></svg></div>
 
 
-	<script src="js/jquery.min.js"></script>
-	<script src="js/jquery-migrate-3.0.1.min.js"></script>
-	<script src="js/popper.min.js"></script>
-	<script src="js/bootstrap.min.js"></script>
-	<script src="js/jquery.easing.1.3.js"></script>
-	<script src="js/jquery.waypoints.min.js"></script>
-	<script src="js/jquery.stellar.min.js"></script>
-	<script src="js/owl.carousel.min.js"></script>
-	<script src="js/jquery.magnific-popup.min.js"></script>
-	<script src="js/aos.js"></script>
-	<script src="js/jquery.animateNumber.min.js"></script>
-	<script src="js/scrollax.min.js"></script>
+	<script src="{% static 'blog/js/jquery.min.js' %}"></script>
+	<script src="{% static 'blog/js/jquery-migrate-3.0.1.min.js' %}"></script>
+	<script src="{% static 'blog/js/popper.min.js' %}"></script>
+	<script src="{% static 'blog/js/bootstrap.min.js' %}"></script>
+	<script src="{% static 'blog/js/jquery.easing.1.3.js' %}"></script>
+	<script src="{% static 'blog/js/jquery.waypoints.min.js' %}"></script>
+	<script src="{% static 'blog/js/jquery.stellar.min.js' %}"></script>
+	<script src="{% static 'blog/js/owl.carousel.min.js' %}"></script>
+	<script src="{% static 'blog/js/jquery.magnific-popup.min.js' %}"></script>
+	<script src="{% static 'blog/js/aos.js' %}"></script>
+	<script src="{% static 'blog/js/jquery.animateNumber.min.js' %}"></script>
+	<script src="{% static 'blog/js/scrollax.min.js' %}"></script>
 	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
-	<script src="js/google-map.js"></script>
+	<script src="{% static 'blog/js/google-map.js' %}"></script>
 	
 	<script src="js/main.js"></script>
 		
 </body>
 </html>
+
