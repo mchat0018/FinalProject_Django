@@ -1,0 +1,36 @@
+{% extends 'blog/base.html' %}
+{% block content %}
+    <div class="row pt-md-4">
+        <h1 class="mb-3">{{ post.title }}</h1>
+        <p><span class="icon-person">{{post.author}}</span>  <span><i class="icon-calendar mr-2"></i>{{ post.date_posted|date:"M d, Y" }}</span></p>
+        <p><span class="text-muted">Topic: <a href="{% url 'category-posts' post.field_tag.id %}">{{post.field_tag}}</a></span></p>
+        <p><img src="{{ post.image.url }}" class="img-fluid"></p>
+        <p>{{ post.content }}</p>
+          
+        <div class="pt-5 mt-5">
+            <h3 class="mb-5 font-weight-bold">{{ post.comment_count }} Comments</h3>
+            <ul class="comment-list">
+                {% for commie in comments %}
+                    <li class="comment">
+                        <div class="comment-body">
+                            <h3>{{ commie.author }}</h3>
+                            <div class="meta">{{commie.date_posted}}</div>
+                            <p>{{commie.comment}}</p>
+                        </div>
+                    </li>
+                {% endfor %}
+            </ul>
+            <div class="comment-form-wrap pt-5">
+                <h3 class="mb-5">Leave a comment</h3>
+                <form method="POST" class="p-3 p-md-5 bg-light">
+                    <div class="form-group">
+                        {{form|crispy}}
+                    </div>
+                    <div class="form-group">
+                        <button class="btn btn-outline-info" type="submit">Submit</button>
+                    </div>
+                </form>
+            </div>
+        </div>    
+    </div>
+{% endblock content %}

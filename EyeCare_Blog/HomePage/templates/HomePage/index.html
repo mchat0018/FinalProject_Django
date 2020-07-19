@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+{%load crispy_forms_tags%}
+<html lang="en">
+<head>
+    <title>Mediplus - Free Bootstrap 4 Template by Colorlib</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    
+    <link href="https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,500,600,700,800,900" rel="stylesheet">
+
+    <link rel="stylesheet" href="css/open-iconic-bootstrap.min.css">
+    <link rel="stylesheet" href="css/animate.css">
+    
+    <link rel="stylesheet" href="css/owl.carousel.min.css">
+    <link rel="stylesheet" href="css/owl.theme.default.min.css">
+    <link rel="stylesheet" href="css/magnific-popup.css">
+
+    <link rel="stylesheet" href="css/aos.css">
+
+    <link rel="stylesheet" href="css/ionicons.min.css">
+    
+    <link rel="stylesheet" href="css/flaticon.css">
+    <link rel="stylesheet" href="css/icomoon.css">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body data-spy="scroll" data-target=".site-navbar-target" data-offset="300">
+  	<div class="py-1 bg-black top">
+    	<div class="container">
+    		<div class="row no-gutters d-flex align-items-start align-items-center px-md-0">
+	    		<div class="col-lg-12 d-block">
+		    		<div class="row d-flex">
+		    			<div class="col-md pr-4 d-flex topper align-items-center">
+					    	<div class="icon mr-2 d-flex justify-content-center align-items-center"><span class="icon-phone2"></span></div>
+						    <span class="text">+ 1235 2355 98</span>
+					    </div>
+					    <div class="col-md pr-4 d-flex topper align-items-center">
+					    	<div class="icon mr-2 d-flex justify-content-center align-items-center"><span class="icon-paper-plane"></span></div>
+						    <span class="text">youremail@email.com</span>
+					    </div>
+					    <div class="col-md-5 pr-4 d-flex topper align-items-center text-lg-right justify-content-end">
+						    <p class="mb-0 register-link"><a href="#" class="mr-3">Sign Up</a><a href="#">Sign In</a></p>
+					    </div>
+				    </div>
+			    </div>
+		    </div>
+		  </div>
+    </div>
+    <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light site-navbar-target" id="ftco-navbar">
+	    <div class="container">
+	      	<a class="navbar-brand" href="index.html">Mediplus</a>
+	    
+			<div class="collapse navbar-collapse" id="ftco-nav">
+				<ul class="navbar-nav nav ml-auto">
+					<li class="nav-item"><a href="{% url 'home' %}" class="nav-link"><span>Home</span></a></li>
+					<li class="nav-item"><a href="{% url 'about' %}" class="nav-link"><span>About</span></a></li>
+					<li class="nav-item"><a href="{% url 'appointment' %}" class="nav-link"><span>Services</span></a></li>
+					<li class="nav-item"><a href="{% url 'blogsection' %}" class="nav-link"><span>Blog</span></a></li>
+					<li class="nav-item"><a href="{% url 'testimonials' %}" class="nav-link"><span>Testimonials</span></a></li>
+					<li class="nav-item"><a href="{% url 'contact' %}" class="nav-link"><span>Contact</span></a></li>
+					<li class="nav-item cta mr-md-2"><a href="{% url 'appointment' %}" class="nav-link">Appointment</a></li>
+				</ul>
+			</div>
+	    </div>
+	</nav>
+	  
+	<section class="hero-wrap js-fullheight" style="background-image: url('images/bg_3.jpg');" data-section="home" data-stellar-background-ratio="0.5" id="home">
+      	<div class="overlay"></div>
+      	<div class="container">
+        	<div class="row no-gutters slider-text js-fullheight align-items-center justify-content-start" data-scrollax-parent="true">
+          		<div class="col-md-6 pt-5 ftco-animate">
+          			<div class="mt-5">
+          				<span class="subheading">Welcome to Mediplus</span>
+	            		<h1 class="mb-4">We are here <br>for your Care</h1>
+	            		<p class="mb-4">Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Separated they live in Bookmarksgrove.</p>
+	            		<p><a href="{% url 'appointment' %}" class="btn btn-primary py-3 px-4">Make an appointment</a></p>
+            		</div>
+          		</div>
+        	</div>
+      	</div>
+    </section>
+
+	<section class="ftco-counter img ftco-section ftco-no-pt ftco-no-pb" id="about-section">
+    	<div class="container">
+    		<div class="row d-flex">
+    			<div class="col-md-6 col-lg-5 d-flex">
+    				<div class="img d-flex align-self-stretch align-items-center">
+						<img src="{{about.image.url }}">
+    				</div>
+    			</div>
+    			<div class="col-md-6 col-lg-7 pl-lg-5 py-md-5">
+    				<div class="py-md-5">
+	    				<div class="row justify-content-start pb-3">
+			          		<div class="col-md-12 heading-section ftco-animate p-4 p-lg-5">
+			            		<h2 class="mb-4">This is me, <span>Dr Amrita Kapoor Chaturvedi</span></h2>
+			            		<p>{{about.description}}</p>
+			            		<p><a href="{% url 'appointment' %}" class="btn btn-primary py-3 px-4">Make an appointment</a> <a href="{% url 'contact' %}" class="btn btn-secondary py-3 px-4">Contact us</a></p>
+			          		</div>
+			        	</div>
+		        	</div>
+	        	</div>
+        	</div>
+    	</div>
+    </section>
+
+
+	<section class="ftco-section ftco-no-pt ftco-no-pb ftco-services-2 bg-light" id='service-section'>
+		<div class="container">
+			<div class="row d-flex">
+				<div class="col-md-7 py-5">
+					<div class="py-lg-5">
+						<div class="row justify-content-center pb-5">
+							<div class="col-md-12 heading-section ftco-animate">
+								<h2 class="mb-3">Services</h2>
+							</div>
+						</div>
+						<div class="row">
+							{% for sv in services %}
+								<div class="col-md-6 d-flex align-self-stretch ftco-animate">
+									<div class="media block-6 services d-flex">
+										<div class="media-body pl-md-4">
+											<h3 class="heading mb-3">{{sv.service}}</h3>
+											<p>{{sv.description}}</p>
+										</div>
+									</div>      
+								</div>
+							{% endfor %}
+						</div>
+					</div>
+	      		</div>
+				<div class="col-md-5 d-flex">
+					<div class="appointment-wrap bg-white p-4 p-md-5 d-flex align-items-center">
+						<form method="POST" class="appointment-form ftco-animate">
+							<fieldset class="form-group">
+								<legend class="border-bottom mb-4">Request Appointment</legend>
+								{{ form|crispy }}
+							</fieldset>
+							<div class="form-group">
+								<button class="btn btn-outline-info" type="submit">Submit</button>
+							</div>	
+						</form>
+					</div>
+	       		</div>
+	    	</div>
+		</div>
+	</section>
+	
+	<section class="ftco-section bg-light" id="blog-section">
+		<div class="container">
+			<div class="row justify-content-center mb-5 pb-5">
+				<div class="col-md-10 heading-section text-center ftco-animate">
+					<h2 class="mb-4">Blog Updates</h2>
+					<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Velit tempora, vel illum deserunt dolorum corporis incidunt veritatis 
+					culpa dolore eius iste quos eveniet earum exercitationem, iusto nemo, modi debitis non.</p>
+				</div>
+			</div>
+			<div class="row d-flex">
+				{% for post in latest %}
+					<div class="col-md-4 ftco-animate">
+						<div class="blog-entry">
+							<img src="{{post.image.url}}" class="block-20">
+							<div class="text d-block">
+								<div class="meta mb-3">
+									<div>{{post.date_posted|date: "M d, Y" }}</div>
+									<div><a href="#">Admin</a></div>
+									<div><a href="#" class="meta-chat"><span class="icon-chat"></span>{{post.comment_count}}</a></div>
+								</div>
+								<h3 class="heading"><a href="{% url 'blog_detail' post.id %}">{{post.title}}</a></h3>
+								<p>{{ post.content|truncate:50 }}</p>
+								<p><a href="{% url 'blog_detail' post.id %}" class="btn btn-primary py-2 px-3">Read more</a></p>
+							</div>
+						</div>
+					</div>
+				{% endfor %}
+			</div>
+			<div class="row d-flex">
+				{% for post in popular %}
+					<div class="col-md-4 ftco-animate">
+						<div class="blog-entry">
+							<img src="{{post.image.url}}" class="block-20">
+							<div class="text d-block">
+								<div class="meta mb-3">
+									<div>{{post.date_posted|date: "M d, Y" }}</div>
+									<div><a href="#">Admin</a></div>
+									<div><a href="#" class="meta-chat"><span class="icon-chat"></span>{{post.comment_count}}</a></div>
+								</div>
+								<h3 class="heading"><a href="{% url 'blog_detail' post.id %}">{{post.title}}</a></h3>
+								<p>{{ post.content|truncate:50 }}</p>
+								<p><a href="{% url 'blog_detail' post.id %}" class="btn btn-primary py-2 px-3">Read more</a></p>
+							</div>
+						</div>
+					</div>
+				{% endfor %}
+			</div>
+			<a class="btn btn-primary" href="{% url 'blogs-home' %}" role="button">See all</a>
+		</div>
+    </section>
+
+    <section class="ftco-section testimony-section img" style="background-image: url(images/bg_3.jpg);" id='testimonial-section'>
+    	<div class="overlay"></div>
+		<div class="container">
+			<div class="row justify-content-center pb-3">
+				<div class="col-md-7 text-center heading-section heading-section-white ftco-animate">
+					<span class="subheading">Testimonials</span>
+					<h2 class="mb-4">Our Patients Say</h2>
+				</div>
+			</div>
+			<div class="row ftco-animate justify-content-center">
+				<div class="col-md-12">
+					<div class="carousel-testimony owl-carousel ftco-owl">
+						{% for testimony in testimonials %}
+							<div class="item">
+								<div class="testimony-wrap text-center py-4 pb-5">
+									<div class="user-img">
+										<img src="{{ testimony.image.url }}">
+										<span class="quote d-flex align-items-center justify-content-center">
+											<i class="icon-quote-left"></i>
+										</span>
+									</div>
+									<div class="text px-4">
+										<p class="mb-4">{{testimony.comment}}</p>
+										<p class="name">{{testimony.name}}</p>
+										<span class="position">{{testimony.profession}}</span>
+									</div>
+								</div>
+							</div>
+						{% endfor %}
+					
+					</div>
+				</div>
+			</div>
+      	</div>
+    </section>
+
+    <section class="ftco-section contact-section" id="contact-section">
+      	<div class="container">
+      		<div class="row justify-content-center mb-5 pb-3">
+          		<div class="col-md-7 heading-section text-center ftco-animate">
+            		<h2 class="mb-4">Contact Us</h2>
+            			<p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia</p>
+          		</div>
+        	</div>
+        	<div class="row d-flex contact-info mb-5">
+				<div class="col-md-6 col-lg-4 d-flex ftco-animate">
+					<div class="align-self-stretch box p-4 text-center bg-light">
+						<div class="icon d-flex align-items-center justify-content-center">
+							<span class="icon-phone2"></span>
+						</div>
+						<h3 class="mb-4">Contact Number</h3>
+						<p>{{contact_details.phone}}</p>
+					</div>
+				</div>
+				<div class="col-md-6 col-lg-4 d-flex ftco-animate">
+					<div class="align-self-stretch box p-4 text-center bg-light">
+						<div class="icon d-flex align-items-center justify-content-center">
+							<span class="icon-paper-plane"></span>
+						</div>
+						<h3 class="mb-4">Email Address</h3>
+						<p>{{contact_details.email}}</p>
+					</div>
+				</div>
+				<div class="col-md-6 col-lg-4 d-flex ftco-animate">
+					<div class="align-self-stretch box p-4 text-center bg-light">
+						<div class="icon d-flex align-items-center justify-content-center">
+							<span class="icon-globe"></span>
+						</div>
+						<h3 class="mb-4">Website</h3>
+						<p>{{contact_details.website}}</p>
+					</div>
+				</div>
+			</div>
+			<div class="row no-gutters block-9">
+				<div class="col-md-6 order-md-last d-flex">
+					<form method='POST' class="bg-light p-5 contact-form">
+						<div class="form-group">
+							{{form|crispy}}
+						</div>
+						<div class="form-group">
+							<button class="btn btn-outline-info" type="submit">Send</button>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+    </section>
+
+    <footer class="ftco-footer ftco-section img" style="background-image: url(images/footer-bg.jpg);">
+    	<div class="overlay"></div>
+		<div class="container-fluid px-md-5">
+			<div class="row mb-5">
+				<div class="col-md">
+					<div class="ftco-footer-widget mb-4">
+						<h2 class="ftco-heading-2">Mediplus</h2>
+						<p>Far far away, behind the word mountains, far from the countries.</p>
+				
+					</div>
+				</div>         
+          	</div>
+			<div class="col-md">
+				<div class="ftco-footer-widget mb-4 ml-md-4">
+					<h2 class="ftco-heading-2">Links</h2>
+					<ul class="list-unstyled">
+						<li><a href="{% url 'home' %}"><span class="icon-long-arrow-right mr-2"></span>Home</a></li>
+						<li><a href="{% url 'about' %}"><span class="icon-long-arrow-right mr-2"></span>About</a></li>
+						<li><a href="{% url 'appointment' %}"><span class="icon-long-arrow-right mr-2"></span>Services and Appointment</a></li>
+						<li><a href="{% url 'blogs-home' %}"><span class="icon-long-arrow-right mr-2"></span>Blog</a></li>
+						<li><a href="{% url 'testimonials' %}"><span class="icon-long-arrow-right mr-2"></span>Testimonials</a></li>
+						<li><a href="{% url 'contact' %}"><span class="icon-long-arrow-right mr-2"></span>Contact</a></li>
+					</ul>
+				</div>
+			</div>
+          
+			<div class="col-md">
+				<div class="ftco-footer-widget mb-4">
+					<h2 class="ftco-heading-2">Have Questions?</h2>
+					<div class="block-23 mb-3">
+						<ul>
+							<li><a href="#"><span class="icon icon-phone"></span><span class="text">+91-987-106-2465</span></a></li>
+							<li><a href="#"><span class="icon icon-envelope pr-4"></span><span class="text">dr.amritakapoor@gmail.com</span></a></li>
+						</ul>
+					</div>
+				</div>
+			</div>
+    	
+			<div class="row">
+				<div class="col-md-12 text-center">
+			
+					<p><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+		Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="icon-heart color-danger" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
+		<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --></p>
+				</div>
+			</div>
+      	</div>
+    </footer>
+    
+  
+
+	<!-- loader -->
+	<div id="ftco-loader" class="show fullscreen"><svg class="circular" width="48px" height="48px"><circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee"/><circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10" stroke="#F96D00"/></svg></div>
+
+
+	<script src="js/jquery.min.js"></script>
+	<script src="js/jquery-migrate-3.0.1.min.js"></script>
+	<script src="js/popper.min.js"></script>
+	<script src="js/bootstrap.min.js"></script>
+	<script src="js/jquery.easing.1.3.js"></script>
+	<script src="js/jquery.waypoints.min.js"></script>
+	<script src="js/jquery.stellar.min.js"></script>
+	<script src="js/owl.carousel.min.js"></script>
+	<script src="js/jquery.magnific-popup.min.js"></script>
+	<script src="js/aos.js"></script>
+	<script src="js/jquery.animateNumber.min.js"></script>
+	<script src="js/scrollax.min.js"></script>
+	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
+	<script src="js/google-map.js"></script>
+	
+	<script src="js/main.js"></script>
+		
+</body>
+</html>
