@@ -1,4 +1,4 @@
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, get_object_or_404, redirect
 from django.views.generic import (
     ListView,
     DetailView,
@@ -44,34 +44,55 @@ class CategoryBlogPosts(ListView):
         context['categories']=Categories.objects.all()
         return context
    
-class PostDetail(FormMixin,DetailView):
-    model=Blog
-    template_name='blog/blog_detail.html'
-    context_object_name='post'
-    form_class=CommentForm
-
-    def get_success_url(self):
-        return reverse('blog_detail', kwargs={'pk': self.get_object().id})
-    
-    def get_context_data(self,**kwargs):
-        context=super().get_context_data(**kwargs)
-        context['form']=CommentForm(initial={'blog':self.get_object()})
-        context['comments']=Comment.objects.filter(blog=self.get_object()).all()
-        context['categories']=Categories.objects.all()
-        context['popular']=Blog.objects.annotate(comment_count=Count('comment')).order_by('-comment_count')[:4]
-        return context
-
-    def post(self,request,*args,**kwargs):
-        self.object=self.get_object()
-        form=self.get_form()
+def post_detail(request,pk):
+    post=get_object_or_404(Blog,id=pk)
+    if request.method=='POST':
+        form=CommentForm(request.POST)
+        #form.instance.blog=post
         if form.is_valid():
-            return self.form_valid(form)
-        else:
-            return self.form_invalid(form)
+            form.save()
+            return reverse('blog_detail',kwargs={'pk':pk})
+    else:
+        form=CommentForm(initial={'blog':post})
+
+    context={
+        'post':post,
+        'form':form,
+        'comments': Comment.objects.filter(blog=post).all(),
+        'categories':Categories.objects.all(),
+        'popular': Blog.objects.annotate(comment_count=Count('comment')).order_by('-comment_count')[:4]
+    }
     
-    def form_valid(self,form):
-        form.save()
-        return super().form_valid(form)
+    return render(request,'blog_detail.html',context)
+
+# class PostDetail(FormMixin,DetailView):
+#     model=Blog
+#     template_name='blog/blog_detail.html'
+#     context_object_name='post'
+#     form_class=CommentForm
+
+#     def get_success_url(self):
+#         return reverse('blog_detail', kwargs={'pk': self.get_object().id})
+    
+#     def get_context_data(self,**kwargs):
+#         context=super().get_context_data(**kwargs)
+#         context['form']=CommentForm(initial={'blog':self.get_object()})
+#         context['comments']=Comment.objects.filter(blog=self.get_object()).all()
+#         context['categories']=Categories.objects.all()
+#         context['popular']=Blog.objects.annotate(comment_count=Count('comment')).order_by('-comment_count')[:4]
+#         return context
+
+#     def post(self,request,*args,**kwargs):
+#         self.object=self.get_object()
+#         form=self.get_form()
+#         if form.is_valid():
+#             return self.form_valid(form)
+#         else:
+#             return self.form_invalid(form)
+    
+#     def form_valid(self,form):
+#         form.save()
+#         return super().form_valid(form)
 
 def search(request):
     query=request.GET['search']
