@@ -12,24 +12,24 @@ def home(request):
     
     if request.method == 'POST':
         if 'appoint_sub' in request.POST:
-            a_form=AppointmentForm(request.POST)
-            c_form=QueryForm()
+            a_form=AppointmentForm(request.POST, prefix='appoint')
+            c_form=QueryForm(prefix='contact')
             if a_form.is_valid():
                 a_form.save()
                 messages.success(request,f'Your form has been sent. You will receive a response either by phone or email')
                 return reverse('home')
 
         elif 'contact_sub' in request.POST:
-            c_form=QueryForm(request.POST)
-            a_form=AppointmentForm()
+            c_form=QueryForm(request.POST, prefix='contact')
+            a_form=AppointmentForm(prefix='appoint')
             if c_form.is_valid():
                 c_form.save()
                 messages.success(request,f'Your form has been sent. You will receive a response either by phone or email')
                 return reverse('home')
         
     else:
-        a_form=AppointmentForm()
-        c_form=QueryForm()
+        a_form=AppointmentForm(prefix='appoint')
+        c_form=QueryForm(prefix='contact')
     
     context={
         'motto': 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugiat eum vitae reiciendis atque sed illum incidunt quis',
