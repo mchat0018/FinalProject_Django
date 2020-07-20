@@ -6,5 +6,5 @@ class CommentForm(ModelForm):
 
     class Meta:
         model=Comment
-        fields=['author','comment']
+        fields=['author','comment','blog']
         

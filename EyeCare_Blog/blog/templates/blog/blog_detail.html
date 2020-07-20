@@ -4,7 +4,7 @@
     <div class="row pt-md-4">
         <h1 class="mb-3">{{ post.title }}</h1>
         <p><span class="icon-person">{{post.author}}</span>  <span><i class="icon-calendar mr-2"></i>{{ post.date_posted|date:"M d, Y" }}</span></p>
-        <p><span class="text-muted">Topic: <a href="{% url 'category-posts' post.field_tag.id %}">{{post.field_tag}}</a></span></p>
+        <p><span class="text-muted">Topic: <a href="{% url 'category-posts' post.field_tag.field %}">{{post.field_tag}}</a></span></p>
         <p><img src="{{ post.image.url }}" class="img-fluid"></p>
         <p>{{ post.content }}</p>
           
